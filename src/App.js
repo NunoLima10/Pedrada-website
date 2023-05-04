@@ -1,8 +1,11 @@
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <h1>Pedrada WebSite</h1>
+      <div className="container">
+        <Outlet />
+      </div>
     </div>
   );
 }
