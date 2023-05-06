@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import BackgroundImage from '../../assets/backgound-images.jpg';
 import FormBox from '../../components/FormBox/FormBox';
+import FormError from '../../components/FormError/FormError';
 import './Login.css'
+
 function Login() {
   const [pseudonym, setPseudonym] = useState();
   const [password, setPassword] = useState();
@@ -19,6 +21,11 @@ function Login() {
   function RegistrationRedirect(e) {
     navigate('/registration')
   }
+  
+  function closeErroMessage(e) {
+    setErrorMessage(null)
+  }
+
   return (
     <div className="login-container">
       <img src={BackgroundImage} alt='background' className='background-image' />
@@ -35,8 +42,8 @@ function Login() {
         <input className='from-input' type="password" id="password" placeholder='Password' value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
       </FormBox>
+      <FormError errorMessage={errorMessage} onClose={closeErroMessage} />
     </div>
   )
 }

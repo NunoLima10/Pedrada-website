@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import FormBox from '../../components/FormBox/FormBox'
-import ErrorIcon from '../../assets/react-icons/Error'
+import FormError from '../../components/FormError/FormError';
 import InfoIcon from '../../assets/react-icons/Info';
 import BackgroundImage from '../../assets/backgound-images.jpg';
 import './Registration.css'
-
-
 
 const Registration = () => {
   const [pseudonym, setPseudonym] = useState();
@@ -37,6 +35,7 @@ const Registration = () => {
     // // TODO
     // Sent to validation
     setErrorMessage("Password não corresponde")
+    // setTimeout(() => {closeErroMessage()}, 3000);
   }
   function closeErroMessage(e) {
     setErrorMessage(null)
@@ -76,10 +75,9 @@ const Registration = () => {
           onFocus={(e) => setInfoIsVisible(false)}
         />
       </FormBox>
-      <div className={errorMessage ? "box-has-erroMessage" : "no-erroMessage"}>
-        <p className='register-erro-message'>{errorMessage}</p>
-        <ErrorIcon onClose={closeErroMessage} className={"error-icon"} />
-      </div>
+
+      <FormError errorMessage={errorMessage} onClose={closeErroMessage} />
+      
     </div>
   )
 }
