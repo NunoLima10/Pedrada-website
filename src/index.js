@@ -1,10 +1,10 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import Registration from './routes/Registration/Registration';
 import Login from './routes/Login/Login';
 import Home from './routes/Home/Home';
+
+import './index.css';
 
 import { createBrowserRouter,RouterProvider} from 'react-router-dom';
 const router = createBrowserRouter([

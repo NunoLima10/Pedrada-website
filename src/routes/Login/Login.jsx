@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import BackgroundImage from '../../assets/backgound-images.jpg';
 import FormBox from '../../components/FormBox/FormBox';
 import FormError from '../../components/FormError/FormError';
+import {AuthContext} from '../../Contexts/AuthContext'
 import './Login.css'
 
 function Login() {
+  const ctx = useContext(AuthContext)
+ 
   const [pseudonym, setPseudonym] = useState();
   const [password, setPassword] = useState();
   const [errorMessage, setErrorMessage] = useState(null);
@@ -14,7 +17,9 @@ function Login() {
 
   function submitHandler(event) {
     event.preventDefault();
-    // 
+    ctx.setAccessToken("1234")
+    console.log(ctx.accessToken)
+    
     setErrorMessage("Algo correu mal")
   }
 
