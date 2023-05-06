@@ -1,8 +1,15 @@
+import { Outlet } from "react-router-dom";
+import AuthProvider from './Contexts/AuthContext'
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Pedrada WebSite</h1>
+      <div className="container">
+        <AuthProvider>
+          <Outlet />
+        </AuthProvider>
+      </div>
     </div>
   );
 }
