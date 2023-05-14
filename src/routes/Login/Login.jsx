@@ -67,7 +67,7 @@ function Login() {
 
   return (
     <div className="login-container">
-      <img src={BackgroundImage} alt='background' className='background-image' />
+      <img src={BackgroundImage} alt='background' className='background-image-low-brightness' />
       <FormBox
         title={"Login"}
         submitHandler={submitHandler}
