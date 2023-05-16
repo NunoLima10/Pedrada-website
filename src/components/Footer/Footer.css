@@ -1,0 +1,16 @@
+footer {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--light-gray);
+
+}
+footer p {
+    color: var(--dark-gray);
+}
+footer a {
+    color: var(--dark-gray);
+}
