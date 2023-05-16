@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import AuthProvider from './Contexts/AuthContext'
 
 
+
 function App() {
   return (
     <div className="App">
