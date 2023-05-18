@@ -59,7 +59,8 @@ const Registration = () => {
         setErrorMessage(APIResponse.errorMessage)
         return
       }
-      alert(APIResponse.successMessage)
+      // alert(APIResponse.successMessage)
+      navigate("/login")
   }
   function closeErroMessage(e) {
     setErrorMessage(null)

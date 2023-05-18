@@ -3,6 +3,8 @@ import App from './App';
 import Registration from './routes/Registration/Registration';
 import Login from './routes/Login/Login';
 import Landing from './routes/Landing/Landing';
+import Feed from './routes/Feed/Feed';
+import Protected from './routes/Protected/Protected';
 
 import './index.css';
 
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path:'/registration',
                 element: <Registration/>,
+            },
+            {
+                path:'/feed',
+                element: <Protected userRoles={["login"]}><Feed/></Protected>,
             }
         ]
     }

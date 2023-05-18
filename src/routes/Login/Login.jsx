@@ -23,10 +23,10 @@ function Login() {
       setErrorMessage("A campos vazios")
       return false
     }
-    if (password.length < 6) {
-      setErrorMessage("Password é invalido")
-      return false
-    }
+    // if (password.length < 6) {
+    //   setErrorMessage("Password é invalido")
+    //   return false
+    // }
     return true
   }
 
@@ -49,11 +49,11 @@ function Login() {
 
       if(APIResponse.data.token){
         const accessToken = APIResponse.data.token
-        localStorage.setItem('accessToken', accessToken)
-        ctx.setAccessToken(accessToken) //Não esta funcionado 
-        console.log(ctx.accessToken)
+        await ctx.login(accessToken)
+      
       }
-      alert(APIResponse.successMessage)
+      navigate("/feed")
+      
     }
   }
 
