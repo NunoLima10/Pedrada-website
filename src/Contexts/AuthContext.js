@@ -1,26 +1,29 @@
 import React,{createContext} from "react";
-import PedradaAPI from '../api/api';
-import {parseAPIResponse} from '../api/api';
+// import PedradaAPI from '../api/api';
+// import {parseAPIResponse} from '../api/api';
 
 
 export const AuthContext = createContext()
 async function login(token){
-  localStorage.setItem('accessToken', token)
+  localStorage.setItem("accessToken", token)
 }
 async function logout(){
-
+  localStorage.removeItem("accessToken")
 }
 
 async function validToken(){
+  //aulo login
+  return true
   
-  var token = localStorage.getItem("accessToken");
-  
-  if(!token){ return false}
+  // var token = localStorage.getItem("accessToken");
 
-  const APIPromise = PedradaAPI.get(`/login/valid/${token}`)
-  const APIResponse = await parseAPIResponse(APIPromise)
+
+  // if(!token){ return false}
+
+  // const APIPromise = PedradaAPI.get(`/login/valid/${token}`)
+  // const APIResponse = await parseAPIResponse(APIPromise)
   
-  return APIResponse.data.is_valid
+  // return APIResponse.data.is_valid
   
 }
 

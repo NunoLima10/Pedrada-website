@@ -1,11 +1,12 @@
 import "./ListItem.css"
 
 
-const ListItem = () => {
+const ListItem = ({icon, title, OnSelect}) => {
   return (
-    <div className="list-item">
-        <div className="item-logo"></div>
-        <p className="item-text">List item text</p>
+    <div className="list-item" onClick={OnSelect}>
+        <div className="item-logo">
+        </div>
+        <p className="item-text">{title}</p>
     </div>
   )
 }

@@ -33,6 +33,9 @@ function Login() {
   async function submitHandler(event) {
     event.preventDefault();
 
+    navigate("/feed")
+    return
+
     if (valideLogin()) {
       const loginData = {
         pseudonym: pseudonym.trim(),

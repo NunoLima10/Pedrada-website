@@ -17,8 +17,10 @@ export async function parseAPIResponse(APIPromise) {
         successMessage = responseData.success_message["0"]["1"]
     } catch (error) {
         const response = await error.response
-        const responseData = response.data
-        errorMessage = responseData.error_message["0"]["1"]
+        if (response){
+            const responseData = response.data
+            errorMessage = responseData.error_message["0"]["1"]
+        }
     }
     const APIResponse = {
         data: data,

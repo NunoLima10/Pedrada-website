@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import Registration from './routes/Registration/Registration';
 import Login from './routes/Login/Login';
-// import Landing from './routes/Landing/Landing';
+import Landing from './routes/Landing/Landing';
 import Feed from './routes/Feed/Feed';
 import Protected from './routes/Protected/Protected';
 
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path: "/",
-                element:<Feed/>
+                element:<Landing/>
             },
             {
                 path:'/login',

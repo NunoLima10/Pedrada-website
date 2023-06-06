@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     padding-left: .5rem;
+    cursor: pointer;
 }
 .item-logo{
     width: 1.2rem;
