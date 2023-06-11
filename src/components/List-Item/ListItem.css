@@ -1,0 +1,18 @@
+.list-item{
+    width: 100%;
+    height: 2.5rem;
+    background-color: var(--light-gray);
+    display: flex;
+    align-items: center;
+    padding-left: .5rem;
+    cursor: pointer;
+}
+.item-logo{
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--tangerine);
+    border-radius: .2rem;
+}
+.item-text{
+    margin-left: .3rem;
+}

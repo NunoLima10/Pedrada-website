@@ -1,0 +1,69 @@
+.post-container{
+    width: 98%;
+    height: auto;
+    margin: .5rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--very-light-gray);
+}
+
+.users-pseudonyms-container{
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    padding: 0rem  .5rem;
+}
+.user-pseudonyms{
+    font-weight: 500;
+}
+.trow-stone-icon{
+    width: 2rem;
+    height: 2rem;
+    transform: rotate(35deg);
+}
+.stone-tablet-icon{
+    width: 1.8rem;
+    height: 1.8rem;
+}
+.post-description{
+    width: 100%;
+    height: auto;
+    min-height: 2.5rem;
+    padding: .5rem  1rem;
+
+    /* border: solid var(--light-gray);
+    border-radius: .5rem; */
+    background-color: var(--white);
+}
+.post-text{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: left;
+}
+.interactions-container{
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+.interactions-arrow-up{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--medium-gray);
+}
+.interactions-arrow-down{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--medium-gray);
+    transform: rotate(180deg);
+}
+.interactions-active{
+    fill: var(--tangerine);
+    width: 1.5rem;
+    height: 1.5rem;
+}

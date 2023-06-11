@@ -1,0 +1,122 @@
+.feed-nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    background-color: var(--tangerine);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.feed-nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.search-box {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.app-logo{
+    position: absolute;
+    width: 3rem;
+    cursor: pointer;
+}
+.feed-menu{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+  
+}
+.house-menu-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill:var(--white);
+    cursor: pointer;
+}
+.user-menu-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill:var(--white);
+    cursor: pointer;
+}
+.community-menu-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill:var(--white);
+    cursor: pointer;
+}
+
+.user-menu{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.user-icon{
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--white);
+    border-radius: .2rem;
+    margin-right: .5rem;
+    cursor: pointer;
+}
+.user-name{
+    font-size: bold;
+    color: var(--white);
+    cursor: pointer;
+}
+.logout-icon{
+    width: 1.2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    fill: var(--white);
+    cursor: pointer;
+}
+.feed-menu-mobile{
+    display: none;
+}
+
+@media screen and (max-width: 900px){
+    .feed-nav-container{
+       flex-direction: column;
+    }
+    .search-box{
+        width: 50%;
+    }
+    .feed-menu{
+       display: none;
+    }
+    .user-menu{
+        width: 50%;
+    }
+    .feed-menu-mobile{
+        position: fixed;
+        background-color: var(--tangerine);
+        bottom: 0;
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+    }
+}
+@media screen and (max-width: 500px){
+    .user-name{
+        display: none;
+    }
+}
