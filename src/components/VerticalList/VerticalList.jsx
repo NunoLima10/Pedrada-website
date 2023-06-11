@@ -1,9 +1,15 @@
-import "./VerticalList.css"
+import { useNavigate } from 'react-router-dom'
+
 import ListItem from "../List-Item/ListItem"
+import "./VerticalList.css"
 
 const VerticalList = ({ title, itemList }) => {
-  function selectItem(title){
-    console.log(title)
+
+  const navigate = useNavigate();
+
+  function selectItem(community_name){
+    navigate(`/community/${community_name}`)
+
   }
   return (
     <div className="list-container">
@@ -14,7 +20,7 @@ const VerticalList = ({ title, itemList }) => {
           itemList.map((item) => 
           <ListItem title={item.community_name} 
           key={item.public_id}
-          OnSelect={() => selectItem(item.name)}/>):
+          OnSelect={() => selectItem(item.community_name)}/>):
           <p>Não a itens</p>
         }
       </div>
