@@ -6,16 +6,7 @@
     justify-content: center;
     position: relative;
 }
-.popup-create-community{
-    width: 30rem;
-    height: 30rem;
-    position: absolute;
-    top:10rem;
-    left: 50%;
-    transform: translate(-50%,0);
-    background-color: blue;
-    z-index: 1;
-}
+
 .feed-left{
     margin-top: 3rem;
     position: fixed;
@@ -49,8 +40,7 @@
     margin-top: 3rem;
     width: 40%;
     /* height: 100%; */
-    background-color: red;
-    /* background-color: var(--white); */
+    background-color: var(--white);
     display: flex;
     flex-direction: column;
     align-items: center;

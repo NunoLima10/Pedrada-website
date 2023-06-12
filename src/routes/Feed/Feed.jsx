@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import FeedNav from "../../components/FeedNav/FeedNav"
-import VerticalList from "../../components/VerticalList/VerticalList"
+import CommunityVerticalList from "../../components/VerticalList/CommunityVerticalList"
+import UserVerticalList from "../../components/VerticalList/UserVerticalList"
 import "./Feed.css"
-import UserPost from "../../components/Post/Post"
+import Post from "../../components/Post/Post"
 import PedradaAPI from '../../api/api';
 import { parseAPIResponse } from '../../api/api';
 
@@ -19,22 +20,35 @@ const Feed = () => {
   }
   const [contendType, setContendType] = useState(contendTypes.home)
   const [communityList, setCommunityList] = useState([])
+  const [postsList, setPostsList] =  useState([])
+  const [userList, setUserList] =  useState([])
 
   useEffect(() => {
     async function getCommunities() {
       const APIPromise = PedradaAPI.get("/communities")
       const APIResponse = await parseAPIResponse(APIPromise)
-      //  console.log(APIResponse.data)
       setCommunityList(APIResponse.data)
     }
+    async function getPost() {
+      const APIPromise = PedradaAPI.get("/posts")
+      const APIResponse = await parseAPIResponse(APIPromise)
+      setPostsList(APIResponse.data)
+      
+    }
+
+    async function getUser() {
+      const APIPromise = PedradaAPI.get("/users")
+      const APIResponse = await parseAPIResponse(APIPromise)
+      setUserList(APIResponse.data)
+      
+    }
     getCommunities()
+    getPost()
+    getUser()
 
   }, [])
 
-  // function getContend(){
-  //   console.log(contendType)
-  // }
-
+  
   function createCommunityRedirect(){
     navigate("/community/create")
   }
@@ -44,14 +58,20 @@ const Feed = () => {
       <FeedNav contendTypes={contendTypes} selectContendType={setContendType} />
   
       <div className="feed-left">
-        <VerticalList title={"Comunidades"} itemList={communityList} />
+        <CommunityVerticalList itemList={communityList} />
         <button className="create-community-button" onClick={createCommunityRedirect}>+</button>
       </div>
       <div className="feed-contend">
-       
+      {
+          postsList?
+          postsList.map((item) => 
+          <Post public_id={item.public_id} key={item.public_id}/>
+          ):
+          <p>Não a itens</p>
+        }
       </div>
       <div className="feed-right">
-        <VerticalList title={"Usuários"} />
+        <UserVerticalList itemList={userList} />
       </div>
     </div>
   )

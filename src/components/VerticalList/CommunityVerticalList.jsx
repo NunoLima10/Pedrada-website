@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import ListItem from "../List-Item/ListItem"
 import "./VerticalList.css"
 
-const VerticalList = ({ title, itemList }) => {
+const CommunityVerticalList = ({itemList }) => {
 
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const VerticalList = ({ title, itemList }) => {
   }
   return (
     <div className="list-container">
-      <h3 className="list-title">{title}</h3>
+      <h3 className="list-title">Comunidades</h3>
       <div className="item-container">
         {
           itemList?
@@ -28,4 +28,4 @@ const VerticalList = ({ title, itemList }) => {
   )
 }
 
-export default VerticalList
+export default CommunityVerticalList
