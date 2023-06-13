@@ -8,6 +8,7 @@ import { parseAPIResponse } from '../../api/api';
 const Profile = () => {
     const profile = useParams()
     const [userName, setUserName] = useState()
+    const [postsType, setPostsType] =  useState("posted")
 
     useEffect(() => {
         async function getProfileInfo() {
@@ -20,6 +21,9 @@ const Profile = () => {
         getProfileInfo()
     
       }, [])
+      async function changePostsType(type){
+        setPostsType(type)
+      }
     
     return (
         <div className="profile-container">
@@ -30,8 +34,12 @@ const Profile = () => {
                 <p className="profile-user-name">{userName}</p>
             </div>
             <div className="profile-navbar">
-                <p>postados</p>
-                <p>identificados</p>
+                <p 
+                    className={ postsType === "posted" ? "profile-navbar-item-selected": "profile-navbar-item"} 
+                    onClick={() => changePostsType("posted")}>Postados</p>
+                <p 
+                className={ postsType === "identified" ? "profile-navbar-item-selected": "profile-navbar-item"} 
+                onClick={() => changePostsType("identified") }>Identificados</p>
             </div>
             <div className="profile-post-container">
            
