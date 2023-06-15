@@ -1,18 +1,18 @@
-import "./Profile.css"
+import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import Post from "../../components/Post/Post"
-import { useState,useEffect } from "react";
-import PedradaAPI from '../../api/api';
-import { parseAPIResponse } from '../../api/api';
+import PedradaAPI, { parseAPIResponse } from '../../api/api';
+import "./Profile.css";
 
 const Profile = () => {
+
+
     const profile = useParams()
     const [userName, setUserName] = useState()
     const [postsType, setPostsType] =  useState("posted")
 
     useEffect(() => {
         async function getProfileInfo() {
-            const APIPromise = PedradaAPI.get(`/user/pseudonym/${profile.pseudonym}`)
+            const APIPromise = PedradaAPI.get(`/users?pseudonym=${profile.pseudonym}`)
             const APIResponse = await parseAPIResponse(APIPromise)
             const user = APIResponse.data[0]
             setUserName(user.pseudonym)
@@ -20,7 +20,7 @@ const Profile = () => {
         }
         getProfileInfo()
     
-      }, [])
+      }, [profile.pseudonym])
       async function changePostsType(type){
         setPostsType(type)
       }

@@ -1,17 +1,16 @@
-import "./Post.css"
 import { useEffect, useState } from "react"
-import TrowStone from "../../assets/react-icons/TrowStone"
-import StoneTablet from "../../assets/react-icons/StoneTablet"
+import PedradaAPI, { parseAPIResponse } from '../../api/api'
 import Arrow from "../../assets/react-icons/Arrow"
-import PedradaAPI from '../../api/api';
-import { parseAPIResponse } from '../../api/api';
+import StoneTablet from "../../assets/react-icons/StoneTablet"
+import TrowStone from "../../assets/react-icons/TrowStone"
+import "./Post.css"
 
-const Post = ({public_id}) => {
+const Post = ({ public_id }) => {
 
   const [user1, setUser1] = useState("")
   const [user2, setUser2] = useState("")
-  const [postDescription,setPostDescription] = useState("")
-  const [postType,setPostType] = useState("")
+  const [postDescription, setPostDescription] = useState("")
+  const [postType, setPostType] = useState("")
 
   const [arrowUp, setArrowUp] = useState(false)
   const [arrowDown, setArrowDown] = useState(false)
@@ -20,46 +19,46 @@ const Post = ({public_id}) => {
 
   useEffect(() => {
     async function getPostInfo() {
-      let APIPromise = PedradaAPI.get(`/post/${public_id}`)
+      let APIPromise = PedradaAPI.get(`/posts/${public_id}`)
       let APIResponse = await parseAPIResponse(APIPromise)
       const postInfo = APIResponse.data[0]
       setPostType(postInfo.post_type)
       setPostDescription(postInfo.post_description)
 
-      APIPromise = PedradaAPI.get(`/user/id/${postInfo.owner_public_id}`)
+      APIPromise = PedradaAPI.get(`/users?public_id=${postInfo.owner_public_id}`)
       APIResponse = await parseAPIResponse(APIPromise)
       const owner = APIResponse.data[0]
       setUser1(owner.pseudonym)
-     
 
-      if (postType === "identified"){
-        APIPromise = PedradaAPI.get(`/user/id/${postInfo.owner_public_id}`)
+
+      if (postType === "identified") {
+        APIPromise = PedradaAPI.get(`/users?public_id=${postInfo.owner_public_id}`)
         APIResponse = await parseAPIResponse(APIPromise)
         const identified = APIResponse.data[0]
         console.log(identified)
         setUser2(identified.pseudonym)
-      }else{
-        APIPromise = PedradaAPI.get(`/community/id/${postInfo.community_public_id}`)
+      } else {
+        APIPromise = PedradaAPI.get(`/communities?public_id=${postInfo.community_public_id}`)
         APIResponse = await parseAPIResponse(APIPromise)
         const community = APIResponse.data[0][0]
-       
+
         setUser2(community.community_name)
       }
     }
     getPostInfo()
 
-  }, [])
+  },)
 
   function likePost() {
 
-    if(arrowUp) {
+    if (arrowUp) {
       setArrowUp(false)
-      setLikeNumber((prev) => prev - 1 )
+      setLikeNumber((prev) => prev - 1)
     } else {
       setArrowUp(true)
-      setLikeNumber((prev) => prev + 1 )
+      setLikeNumber((prev) => prev + 1)
     }
-    if(arrowDown){
+    if (arrowDown) {
       setArrowDown(false)
       setDisLikeNumber((prev) => prev - 1)
     }
@@ -67,14 +66,14 @@ const Post = ({public_id}) => {
     // enviar requisição
   }
   function disLikePost() {
-    if(arrowDown) {
+    if (arrowDown) {
       setArrowDown(false)
-      setDisLikeNumber((prev) => prev - 1 )
+      setDisLikeNumber((prev) => prev - 1)
     } else {
       setArrowDown(true)
-      setDisLikeNumber((prev) => prev + 1 )
+      setDisLikeNumber((prev) => prev + 1)
     }
-    if(arrowUp){
+    if (arrowUp) {
       setArrowUp(false)
       setLikeNumber((prev) => prev - 1)
     }
@@ -86,7 +85,7 @@ const Post = ({public_id}) => {
     <div className="post-container">
       <div className="users-pseudonyms-container">
         <p className="user-pseudonyms">{user1}</p>
-        {postType === "identified" ? <TrowStone className="trow-stone-icon" />: <StoneTablet className="stone-tablet-icon"/> }
+        {postType === "identified" ? <TrowStone className="trow-stone-icon" /> : <StoneTablet className="stone-tablet-icon" />}
         <p className="user-pseudonyms" >{user2}</p>
       </div>
       <div className="post-description">

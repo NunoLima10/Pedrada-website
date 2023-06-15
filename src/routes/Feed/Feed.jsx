@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
+import PedradaAPI, { parseAPIResponse } from '../../api/api'
 import FeedNav from "../../components/FeedNav/FeedNav"
+import Post from "../../components/Post/Post"
 import CommunityVerticalList from "../../components/VerticalList/CommunityVerticalList"
 import UserVerticalList from "../../components/VerticalList/UserVerticalList"
 import "./Feed.css"
-import Post from "../../components/Post/Post"
-import PedradaAPI from '../../api/api';
-import { parseAPIResponse } from '../../api/api';
 
 
 const Feed = () => {
@@ -18,7 +17,7 @@ const Feed = () => {
     users: "users",
     community: "community"
   }
-  const [contendType, setContendType] = useState(contendTypes.home)
+  // const [contendType, setContendType] = useState(contendTypes.home)
   const [communityList, setCommunityList] = useState([])
   const [postsList, setPostsList] =  useState([])
   const [userList, setUserList] =  useState([])
@@ -55,7 +54,7 @@ const Feed = () => {
 
   return (
     <div className="feed-container">
-      <FeedNav contendTypes={contendTypes} selectContendType={setContendType} />
+      <FeedNav contendTypes={contendTypes} selectContendType={() => ""} />
   
       <div className="feed-left">
         <CommunityVerticalList itemList={communityList} />
