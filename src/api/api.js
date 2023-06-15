@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const PedradaAPI = axios.create({
-    baseURL: "https://87e6-41-221-207-10.eu.ngrok.io/"
+    baseURL: "http://127.0.0.1:5000"
 })
 
 export async function parseAPIResponse(APIPromise) {

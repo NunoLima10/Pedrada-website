@@ -1,34 +1,31 @@
-import './CommunityProfile.css'
-import Post from '../../components/Post/Post'
+import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from "react"
-import PedradaAPI from '../../api/api';
-import { parseAPIResponse } from '../../api/api';
+import PedradaAPI, { parseAPIResponse } from '../../api/api';
+import Post from '../../components/Post/Post';
+import './CommunityProfile.css';
 
 const CommunityProfile = () => {
 
   const community = useParams()
   const [communityName, setCommunityName] = useState("")
   const [communityDescription, setCommunityDescription ] = useState("")
-  const [communityPublicID, setCommunityPublicID] = useState("")
   const [communityPots, setCommunityPots] = useState([])
 
   useEffect(() => {
     async function getCommunityInfo() {
-      const APIPromise = PedradaAPI.get(`/community/name/${community.community_name}`)
+      const APIPromise = PedradaAPI.get(`/communities?name=${community.community_name}`)
       const APIResponse = await parseAPIResponse(APIPromise)
       const communityInfo = APIResponse.data[0][0]
       const communityPost = APIResponse.data[1]
       
       setCommunityName(communityInfo.community_name)
       setCommunityDescription(communityInfo.community_description)
-      setCommunityPublicID(communityInfo.public_id)
       setCommunityPots(communityPost)
       
     }
     getCommunityInfo()
 
-  }, [])
+  }, [community.community_name])
 
   return (
     <div className="community-profile-container">

@@ -23,18 +23,16 @@ function Login() {
       setErrorMessage("A campos vazios")
       return false
     }
-    // if (password.length < 6) {
-    //   setErrorMessage("Password é invalido")
-    //   return false
-    // }
+    if (password.length < 6) {
+      setErrorMessage("Password é invalido")
+      return false
+    }
     return true
   }
 
   async function submitHandler(event) {
     event.preventDefault();
 
-    navigate("/feed")
-    return
 
     if (valideLogin()) {
       const loginData = {
